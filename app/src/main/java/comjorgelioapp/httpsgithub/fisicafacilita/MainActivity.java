@@ -1,19 +1,14 @@
 package comjorgelioapp.httpsgithub.fisicafacilita;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.view.*;
 import android.widget.Button;
 import android.util.Log;
-import android.content.res.*;
-import android.*;
-import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
     private TextView info;
@@ -24,10 +19,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        start = (Button) findViewById(R.id.button);
+        start = (Button) findViewById(R.id.button1);
+
+        start.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent =  new Intent(MainActivity.this,Main2Activity.class);
+                finish();
+                startActivity(intent);
+            }
+
+        });
+
+
         info = (TextView) findViewById(R.id.info);
         texto = (TextView) findViewById(R.id.texto);
+
     }
 
     @Override
@@ -50,22 +57,12 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (item.getItemId() == android.R.id.home){
             Log.i("ActionBar","Atrás!");
-            setContentView(R.layout.activity_main);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            start = (Button) findViewById(R.id.button);
-            info = (TextView) findViewById(R.id.info);
-            texto = (TextView) findViewById(R.id.texto);
+            finish();
         }
 
         return true;
     }
 
-    public void start_(View v){
-        setContentView(R.layout.start);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        info = (TextView) findViewById(R.id.info);
-
-    }
 
 }
 
